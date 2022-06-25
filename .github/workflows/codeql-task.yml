@@ -16,7 +16,7 @@ jobs:
 
       - name: Setup CodeQL
         run: |
-          wget https://github.com/github/codeql-cli-binaries/releases/download/v2.7.6/codeql-linux64.zip
+          wget https://github.com/github/codeql-cli-binaries/releases/download/v2.9.4/codeql-linux64.zip
           unzip codeql-linux64.zip
           rm -f codeql-linux64.zip
           git clone -b v1.27.0 https://github.com/github/codeql.git ql
@@ -34,7 +34,7 @@ jobs:
 
       - name: Run codeQL-task
         run: |
-          find ./ -name "common-cpp-coding-standards*"
+          rm -rf codeql_work/codeql-database
           git clone https://github.com/Tomtomsource/codeql-rule-packs.git -b develop
           mkdir -p  codeql_work
           codeql/codeql database create codeql_work/codeql-database --language=cpp --command='bazel build //main:hello-world'
