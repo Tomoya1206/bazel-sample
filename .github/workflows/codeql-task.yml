@@ -19,7 +19,7 @@ jobs:
           wget https://github.com/github/codeql-cli-binaries/releases/download/v2.9.4/codeql-linux64.zip
           unzip codeql-linux64.zip
           rm -f codeql-linux64.zip
-          git clone -b v1.26.0 https://github.com/github/codeql.git ql
+          git clone -b v1.27.0 https://github.com/github/codeql.git ql
       
       - name: Setup Bazel
         run: |
