@@ -1,5 +1,5 @@
 ---
-name codeQL-task
+name: codeQL-task
 on:
   push:
     branches:
