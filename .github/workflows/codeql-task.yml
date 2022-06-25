@@ -11,6 +11,13 @@ jobs:
     name: codeql-job
     runs-on: ubuntu-latest
     steps:
+      - name: Cdeckout repository
+        uses: actions/checkout@v3
+
+      - name: Setup CodeQL
+        run: |
+          wget --help
+
       - name: Run codeQL-task
         run: |
           echo "success"
