@@ -16,21 +16,13 @@ jobs:
 
       - name: Setup CodeQL
         run: |
-          wget https://github.com/github/codeql-cli-binaries/releases/download/v2.3.4/codeql-osx64.zip
+          wget https://github.com/github/codeql-cli-binaries/releases/download/v2.9.4/codeql-linux64.zip
           unzip codeql-osx64.zip
           rm -f codeql-osx64.zip
           git clone -b v1.26.0 https://github.com/github/codeql.git ql
       
       - name: Setup Bazel
         run: |
-          # sudo add-apt-repository ppa:webupd8team/java
-          # sudo apt-get update
-          # sudo apt-get install oracle-java8-installer
-          # sudo apt-get install pkg-config zip g++ zlib1g-dev unzip
-          # wget https://github.com/bazelbuild/bazel/releases/download/0.2.0/bazel-0.2.0-installer-linux-x86_64.sh
-          # chmod +x bazel-0.2.0-installer-linux-x86_64.sh
-          # ./bazel-version-installer-os.sh --user
-          # export PATH="$PATH:$HOME/bin"
           sudo apt install apt-transport-https curl gnupg
           curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > bazel.gpg
           sudo mv bazel.gpg /etc/apt/trusted.gpg.d/
@@ -43,8 +35,7 @@ jobs:
       - name: Run codeQL-task
         run: |
           mkdir -p  codeql_work
-          bazel build //main:hello-world
-          # codeql/codeql database create codeql_work/codeql-database --language=cpp --command='bazel build //main:hello-world'
+          codeql/codeql database create codeql_work/codeql-database --language=cpp --command='bazel build //main:hello-world'
           echo "success"
 
       - name: Clean workspace
