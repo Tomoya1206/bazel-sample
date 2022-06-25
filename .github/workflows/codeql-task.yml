@@ -20,7 +20,6 @@ jobs:
           unzip codeql-osx64.zip
           rm -f codeql-osx64.zip
           git clone -b v1.26.0 https://github.com/github/codeql.git ql
-          export PATH="$PATH:$HOME/codeql"
       
       - name: Setup Bazel
         run: |
@@ -44,7 +43,7 @@ jobs:
       - name: Run codeQL-task
         run: |
           mkdir -p  codeql_work
-          codeql database create codeql_work/codeql-database --language=cpp --command='bazel build //main:hello-world'
+          codeql/codeql database create codeql_work/codeql-database --language=cpp --command='bazel build //main:hello-world'
           echo "success"
 
       - name: Clean workspace
