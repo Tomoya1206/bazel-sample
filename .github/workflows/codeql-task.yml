@@ -20,11 +20,23 @@ jobs:
           unzip codeql-osx64.zip
           rm -f codeql-osx64.zip
           git clone -b v1.26.0 https://github.com/github/codeql.git ql
+          export PATH="$PATH:$HOME/codeql"
+      
+      - name: Setup Bazel
+        run: |
+          sudo add-apt-repository ppa:webupd8team/java
+          sudo apt-get update
+          sudo apt-get install oracle-java8-installer
+          sudo apt-get install pkg-config zip g++ zlib1g-dev unzip
+          wget https://github.com/bazelbuild/bazel/releases/download/0.2.0/bazel-0.2.0-installer-linux-x86_64.sh
+          chmod +x bazel-0.2.0-installer-linux-x86_64.sh
+          ./bazel-version-installer-os.sh --user
+          export PATH="$PATH:$HOME/bin"
 
       - name: Run codeQL-task
         run: |
           mkdir -p  codeql_work
-          codeql/codeql database create codeql_work/codeql-database --language=cpp --command='bazel build //main:hello-world'
+          codeql database create codeql_work/codeql-database --language=cpp --command='bazel build //main:hello-world'
           echo "success"
 
       - name: Clean workspace
