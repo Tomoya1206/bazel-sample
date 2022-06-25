@@ -41,7 +41,7 @@ jobs:
           codeql/codeql database analyze codeql_work/codeql-database codeql-rule-packs/qls/test.qls \
             --format=sarif-latest \
             --output=codeql_work/codeql-analysis.sarif
-          echo "successful"
+          echo "success"
 
       - name: Clean workspace
         if: ${{ always() }}
