@@ -23,7 +23,8 @@ jobs:
 
       - name: Run codeQL-task
         run: |
-          ls -al
+          mkdir -p  codeql_work
+          codeql database create codeql_work/codeql-database --language=cpp --command='bazel build //main:hello-world'
           echo "success"
 
       - name: Clean workspace
