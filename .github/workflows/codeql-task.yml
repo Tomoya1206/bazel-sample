@@ -34,14 +34,14 @@ jobs:
 
       - name: Run codeQL-task
         run: |
+          find ./ -name "common-cpp-coding-standards*"
           git clone https://github.com/Tomtomsource/codeql-rule-packs.git -b develop
           mkdir -p  codeql_work
           codeql/codeql database create codeql_work/codeql-database --language=cpp --command='bazel build //main:hello-world'
           codeql/codeql database analyze codeql_work/codeql-database codeql-rule-packs/qls/test.qls \
             --format=sarif-latest \
-            --output=codeql_work/codeql-analysis.sarif \
-            --threads=8
-          echo "test_success"
+            --output=codeql_work/codeql-analysis.sarif
+          echo "success"
 
       - name: Clean workspace
         if: ${{ always() }}
