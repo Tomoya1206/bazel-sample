@@ -19,7 +19,14 @@ jobs:
           wget https://github.com/github/codeql-cli-binaries/releases/download/v2.3.4/codeql-osx64.zip
           unzip codeql-osx64.zip
           rm -f codeql-osx64.zip
+          git clone -b v1.26.0 https://github.com/github/codeql.git ql
 
       - name: Run codeQL-task
         run: |
           echo "success"
+
+      - name: Clean workspace
+        if: ${{ always() }}
+        run: |
+          chmod +w ${{github.workspace}} -Rf
+          rm -rf ${{github.workspace}}/*
