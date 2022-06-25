@@ -9,7 +9,7 @@ on:
 jobs:
   codeql-job:
     name: codeql-job
-    runson: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Run codeQL-task
         run: |
