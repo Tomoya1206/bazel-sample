@@ -48,7 +48,6 @@ jobs:
           with:
             sarif_file: codeql_work/codeql-analysis.sarif
 
-
       - name: Clean workspace
         if: ${{ always() }}
         run: |
