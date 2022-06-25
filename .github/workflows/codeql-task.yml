@@ -23,6 +23,7 @@ jobs:
 
       - name: Run codeQL-task
         run: |
+          ls -al
           echo "success"
 
       - name: Clean workspace
