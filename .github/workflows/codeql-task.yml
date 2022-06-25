@@ -1,0 +1,13 @@
+---
+name codeQL-task
+on:
+  push:
+    branches:
+      - "develop"
+      - "main"
+
+jobs:
+  codeql-job:
+    - name: Run codeQL
+      run: |
+        echo "success"
