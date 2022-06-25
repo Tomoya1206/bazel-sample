@@ -41,7 +41,7 @@ jobs:
             --format=sarif-latest \
             --output=codeql_work/codeql-analysis.sarif \
             --threads=8
-          echo "success"
+          echo "test_success"
 
       - name: Clean workspace
         if: ${{ always() }}
