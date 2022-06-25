@@ -8,6 +8,8 @@ on:
 
 jobs:
   codeql-job:
-    - name: Run codeQL
-      run: |
-        echo "success"
+    name: codeql-job
+    steps:
+      - name: Run codeQL-task
+        run: |
+          echo "success"
