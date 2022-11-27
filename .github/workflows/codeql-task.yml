@@ -1,6 +1,7 @@
 ---
 name: codeQL-task
 on:
+  workflow_dispatch:
   push:
     branches:
       - "develop"
