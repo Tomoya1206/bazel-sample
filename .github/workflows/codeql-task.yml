@@ -21,7 +21,8 @@ jobs:
           unzip codeql-linux64.zip
           rm -f codeql-linux64.zip
           git clone -b v1.27.0 https://github.com/github/codeql.git ql
-          export PATH="$PATH:${{ github.workspace }}/codeql"
+          export PATH="$PATH:${{ github.workspace }}/codeql/tools/linux64/lib64trace.so"
+          echo $PATH
       
       - name: Setup Bazel
         run: |
