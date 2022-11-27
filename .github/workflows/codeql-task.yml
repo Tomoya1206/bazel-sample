@@ -42,11 +42,7 @@ jobs:
           #   --format=sarif-latest \
           #   --output=codeql_work/codeql-analysis.sarif
           # echo "success"
-
-          ##for debug
-          ls -al
-          echo $PATH
-          bazel version
+          codeql/codeql version
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
