@@ -1,18 +1,6 @@
-cc_library(
-    name = 'sample',
-    hdrs = ['sample.hpp',
-           ],
-    srcs = ['sample.cc',
-           ],
-    linkstatic = True,
-    visibility = ["//visibility:public"],
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+
+cc_binary(
+    name = "hello-world",
+    srcs = ["hello-world.cc"],
 )
-
-cc_test(
-    name = 'hello_test',
-    srcs = ['unit_test.cc'],
-    deps = ['sample',
-            '@com_google_googletest//:gtest_main']
-)
-
-
