@@ -12,18 +12,16 @@ jobs:
     name: codeql-job
     runs-on: ubuntu-latest
     steps:
-      - name: Cdeckout repository
+      - name: Ceckout repository
         uses: actions/checkout@v3
 
       - name: Setup CodeQL
         run: |
-          wget https://github.com/github/codeql-cli-binaries/releases/download/v2.4.2/codeql-linux64.zip
+          wget https://github.com/github/codeql-cli-binaries/releases/download/v2.11.4/codeql-linux64.zip
           unzip codeql-linux64.zip
           rm -f codeql-linux64.zip
           git clone -b v1.27.0 https://github.com/github/codeql.git ql
-          export PATH="$PATH:${{ github.workspace }}/codeql/tools/linux64/lib64trace.so"
-          echo $PATH
-      
+
       - name: Setup Bazel
         run: |
           sudo apt-get install openjdk-8-jdk
