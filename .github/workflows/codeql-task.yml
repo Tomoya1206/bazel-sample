@@ -48,6 +48,12 @@ jobs:
         with:
           sarif_file: codeql_work/codeql-analysis.sarif
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: SARIF file
+          path: codeql_work/codeql-analysis.sarif
+
       - name: Clean workspace
         if: ${{ always() }}
         run: |
